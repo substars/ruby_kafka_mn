@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+Bundler.require
+$LOAD_PATH << './lib'
+require "ruby_kafka_mn"
+
+PITCHES = %w{fastball changeup curveball slider knuckleball eephus}
+OUTCOMES = %w{ball strike foul out hit}
+PLAYERS = ["Kyle Gibson", "Ervin Santana", "Ricky Nolasco", "Tyler Duffey", "Phil Hughes", "Tommy Milone"]
+TOPIC = "twins_pitches1"
+
+publisher=RubyKafkaMn::Publisher.new
+while true
+  60.times do
+    message = {outcome: OUTCOMES.sample, pitch: PITCHES.sample, speed: (rand(60) + 50)}
+    publisher.publish(TOPIC, PLAYERS.sample, message)
+  end
+  sleep 3
+end
+

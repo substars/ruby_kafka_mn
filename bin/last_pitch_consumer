@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+Bundler.require
+$LOAD_PATH << './lib'
+require "ruby_kafka_mn"
+
+consumer=RubyKafkaMn::Consumer.new('twins_pitches1', "last_pitch_event_consumer")
+
+# hmm, this probably isn't threadsafe
+last_pitches = {}
+
+# you'd probably want a supervisor in production, crazy stuff can happen
+Thread.new do
+  consumer.consume do |key, value|
+    last_pitches[key] = value['pitch']
+  end
+end
+
+while true
+  puts "last pitch thrown:"
+  puts "--------------------------"
+  last_pitches.each do |pitcher, pitch|
+    puts "\t#{pitcher}\t\t#{pitch}"
+  end
+  puts
+
+  sleep 5
+end
