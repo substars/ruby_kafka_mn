@@ -32,7 +32,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
     * a distributed commit log-based messaging system...???
     * pretty good paper summarizing architecture: http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf
 
-* [Architecture](images/kafka_architecture.jpg):
+* [Architecture](images/kafka_example.jpg):
     * broker: kafka servers, messages go in, and are persisted for going out
     * message: some bytes, could be anything (key and value)
     * topic: a log of messages intended for consumption by one of more consumer groups
@@ -58,7 +58,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
 * [event sourcing](http://www.martinfowler.com/eaaDev/EventSourcing.html)
     * log compaction makes this an interesting option for storing key-value relationships, esp if you need it in-memory
 * understanding how databases and commit logs are related
-    * your database almost definitely depends on this abstraction to work and replicate
+    * your database almost definitely depends on this abstraction to work and replicate [1]
     * log is a fundamental data structure from which you can create tables or derivations
 * The enterprise service bus is dead, long live the ESB
     * really helped me understand SOA/microservices in a way that I didn't before
@@ -101,7 +101,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
     * there are a ton of levers and not a lot of best practices
 * API is just now becoming stable, lots of outdated info/clients
     * non-Java situation is improving
-* logs are a low-level abstraction, just one piece of the puzzle when it comes to handling stream data []
+* logs are a low-level abstraction, just one piece of the puzzle when it comes to handling stream data [2]
 
 ## Next steps
 * someone write a stable MRI client (librdkafka + FFI plz)
@@ -112,5 +112,5 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
 * ?????
 
 ## Notes
-[] Lots of Jay Kreps writings on table-log duality. Here's one: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying  
-[] Confluent Platform combines Kafka with a schema registry and some other tools in an attempt to create amore Rails-esque curated set of technologies. http://www.confluent.io/
+[1] Lots of Jay Kreps writings on table-log duality. Here's one: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying  
+[2] Confluent Platform combines Kafka with a schema registry and some other tools in an attempt to create amore Rails-esque curated set of technologies. http://www.confluent.io/
