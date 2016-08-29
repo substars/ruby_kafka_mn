@@ -52,7 +52,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
     * analytics
     * monitoring metrics
 * async APIs/job queueing
-    * consumer groups meke it pretty easy to scale up in the right place if you need to
+    * consumer groups make it pretty easy to scale up in the right place if you need to
 * batch processing
     * logs are stored on filesystem, you can wake up and pull it all down whenever you want
 * [event sourcing](http://www.martinfowler.com/eaaDev/EventSourcing.html)
