@@ -7,8 +7,8 @@ require "ruby_kafka_mn"
 
 PITCHES = %w{fastball changeup curveball slider knuckleball eephus}
 OUTCOMES = %w{ball strike foul out hit}
-PLAYERS = ["Kyle Gibson", "Ervin Santana", "Ricky Nolasco", "Tyler Duffey", "Phil Hughes", "Tommy Milone"]
-TOPIC = "twins_pitches1"
+PLAYERS = ["Kyle Gibson", "R.A. Dickey", "Ivan Nova", "Felix Hernandez", "Derek Holland", "Jimmy Nelson", "Jon Lester"]
+TOPIC = "pitch_data1"
 
 publisher=RubyKafkaMn::Publisher.new
 while true

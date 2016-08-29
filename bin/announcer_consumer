@@ -5,7 +5,7 @@ Bundler.require
 $LOAD_PATH << './lib'
 require "ruby_kafka_mn"
 
-consumer=RubyKafkaMn::Consumer.new('twins_pitches1', "scoring_consumer")
+consumer=RubyKafkaMn::Consumer.new("pitch_data1", "scoring_consumer")
 
 while true
   consumer.consume do |key, value, partition, offset|

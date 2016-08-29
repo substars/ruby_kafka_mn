@@ -5,7 +5,7 @@ Bundler.require
 $LOAD_PATH << './lib'
 require "ruby_kafka_mn"
 
-consumer=RubyKafkaMn::Consumer.new('twins_pitches1', "last_pitch_event_consumer")
+consumer=RubyKafkaMn::Consumer.new("pitch_data1", "last_pitch_event_consumer")
 
 # hmm, this probably isn't threadsafe
 last_pitches = {}
