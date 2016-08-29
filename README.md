@@ -18,28 +18,34 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
 
 ## What is this all about?
 * What's a Kafka?
-    * a distributed commit log-based messaging system...???
-    * pretty good paper summarizing architecture: http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf
-* What's it good for?
-    * kind of a lot of stuff
-* How do you use it?
-    * it's free, [go download it](https://kafka.apache.org/)
+    * How does it work?
+    * How do you use it?
+        * it's free, [go download it](https://kafka.apache.org/)
 * How can you make it work with Ruby?
     * it can be kind of complicated, maybe this project will help
     * demo!
 * What's next?
 
 ## Kafka and stream processing
-* History of Kafka
-* Glossary
+* What's a Kafka?
+    * https://kafka.apache.org/
+    * a distributed commit log-based messaging system...???
+    * pretty good paper summarizing architecture: http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf
+
+* [Architecture](images/kafka_architecture.jpg):
     * broker: kafka servers, messages go in, and are persisted for going out
     * message: some bytes, could be anything (key and value)
     * topic: a log of messages intended for consumption by one of more consumer groups
+        * includes configuration around data retention, number of partitions, etc.
     * partition: part of a topic (broker can host many partitions)
+    * offset: sequential message id (really just a byte position within a partiion, monotonically increasing) 
+    * leader: the node of record for a given topic partition
+    * replica: a node that nas a copy of a partition owned by another node
+    * in-sync replica: a node whose replica is up-to-date
     * producer: a program somewhere that publishes messages to a topic
+        * has configurable policies around failures, what a successful write is, etc.
     * consumer: a program that receives messages and maybe commits offsets
-    * consumer group: multiple consumers that act as a logical group (i.e. they share offsets and balance partitions)
-    * offsets: sequential message id (really just a byte position, monotonically increasing) 
+    * consumer group: multiple consumers that act as a logical group (i.e. they share offsets and balance partitions) 
     
 ## Use cases
 * stream processing/pubsub
@@ -86,7 +92,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
 ## demos
 * last_pitch_consumer: an event sourcing thing, kind of
 * announcer_consumer: provide play-by-play for every game at once
-** add/remove consumers
+    *   add/remove consumers
 
 ## What is kind of janky about it?
 * Built as a distributed system from the ground up, latency can cause bigger problems than in other cases

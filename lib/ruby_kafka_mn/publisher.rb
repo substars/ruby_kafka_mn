@@ -25,9 +25,10 @@ module RubyKafkaMn
     end
 
     # async publish that returns a Java Future
-    # also supplied a callback that putses some info
+    # also supplies a callback that putses some info
     def publish(topic, key, value)
       record = ProducerRecord.new(topic, key, value.to_json)
+      # this is actually a method called send on a java object ¯\_(ツ)_/¯
       @producer.send(record, @callback)
     end
 
