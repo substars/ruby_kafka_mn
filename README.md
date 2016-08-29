@@ -69,7 +69,7 @@ From the "Data Processing with Ruby and Apache Kafka" ruby.mn August 2016 presen
 * librdkafka
 * REST proxy (confluent.io)
 * clients built on librdkafka (python, ruby maybe soon?)
-* something some dude wrote on github (not recommended...yet)
+* something some rando wrote on github (not recommended...yet)
     
 # Other options    
 * what's unique about Kafka vs. e.g.
